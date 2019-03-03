@@ -15,6 +15,7 @@ const headers = {
 }
 
 exports.handler = (event, _, callback) => {
+  console.log(event)
   /**
    * @param {number} status Http status to return
    * @param {string} body Response body
@@ -24,12 +25,12 @@ exports.handler = (event, _, callback) => {
   /**
    * @var {number} challenge Confirmation integer
    */
-  const challenge = event.pathParameters['hub.challenge']
+  const challenge = event.queryStringParameters['hub.challenge']
 
   /**
    * @var {number} promoter Matches one of Muffin restaurants
    */
-  const promoter = event.pathParameters.promoter
+  const promoter = event.queryStringParameters.promoter
 
   // Missing configuration.
   if (!token) {
@@ -37,12 +38,12 @@ exports.handler = (event, _, callback) => {
   }
 
   // Is not subscribe request.
-  if (event.pathParameters['hub.mode'] !== 'subscribe' || !challenge || !promoter) {
+  if (event.queryStringParameters['hub.mode'] !== 'subscribe' || !challenge || !promoter) {
     return respond(422, 'Request has incorrect or missing parameters.')
   }
 
   // Token sent with the request don't match the one set in the enviroment.
-  if (event.pathParameters['hub.verify_token'] !== token) {
+  if (event.queryStringParameters['hub.verify_token'] !== token) {
     return respond(403, 'Tokens don\'t match.')
   }
 
