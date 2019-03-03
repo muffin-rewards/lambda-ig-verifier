@@ -27,9 +27,9 @@ exports.handler = (event, _, callback) => {
   const challenge = event.pathParameters['hub.challenge']
 
   /**
-   * @var {number} client Matches one of Muffin restaurants
+   * @var {number} promoter Matches one of Muffin restaurants
    */
-  const client = event.pathParameters.client_id
+  const promoter = event.pathParameters.promoter_id
 
   // Missing configuration.
   if (!token) {
@@ -37,7 +37,7 @@ exports.handler = (event, _, callback) => {
   }
 
   // Is not subscribe request.
-  if (event.pathParameters['hub.mode'] !== 'subscribe' || !challenge || !client) {
+  if (event.pathParameters['hub.mode'] !== 'subscribe' || !challenge || !promoter) {
     return respond(422, 'Request has incorrect or missing parameters.')
   }
 
