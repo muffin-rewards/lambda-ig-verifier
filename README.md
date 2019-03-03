@@ -5,8 +5,7 @@ Verifies new Instagram API webhooks.
 To deploy the lambda for production, use `npm run deploy:prod`.
 
 ## Request
-The request `GET` satisfies the [authorizer lambda](https://github.com/muffin-rewards/lambda-ig-authorizer).
-There are 3 mandatory query parameters:
+The request `GET` has 3 mandatory query parameters:
 
 - `hub.verify_token` which is a token that is set in the IG Dashboard when creating
 new webhook
@@ -14,9 +13,6 @@ new webhook
 - `hub.challenge` is an integer that we respond with if the request is valid
 
 ## Response
-If everything is `ok`, the respond body is equal to `hub.challenge`.
-The response can be intercepted by the [authorizer lambda](https://github.com/muffin-rewards/lambda-ig-authorizer).
-
 If the enviroment has not been setup, it respond with http status `500`.
 
 If the challenge is empty or mode is not correct it responds with `422`.
