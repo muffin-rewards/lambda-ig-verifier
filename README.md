@@ -1,4 +1,4 @@
-# Lambda IG verifier
+# Lambda IG Verifier
 Verifies new Instagram API webhooks.
 
 ## Deployment
