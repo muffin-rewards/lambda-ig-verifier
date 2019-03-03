@@ -15,20 +15,19 @@ const headers = {
 }
 
 exports.handler = (event, _, callback) => {
-  console.log(event)
   /**
    * @param {number} status Http status to return
    * @param {string} body Response body
    */
-  const respond = (status, body) => callback(null, { body, headers, status })
+  const respond = (statusCode, body) => callback(null, { body, headers, statusCode })
 
   /**
-   * @var {number} challenge Confirmation integer
+   * @var {string} challenge Confirmation integer
    */
   const challenge = event.queryStringParameters['hub.challenge']
 
   /**
-   * @var {number} promoter Matches one of Muffin restaurants
+   * @var {string} promoter Matches one of Muffin restaurants
    */
   const promoter = event.queryStringParameters.promoter
 
@@ -48,5 +47,5 @@ exports.handler = (event, _, callback) => {
   }
 
   // Responds with the challenge integer to verify the subscribtion.
-  respond(200, String(challenge))
+  respond(200, challenge)
 }
