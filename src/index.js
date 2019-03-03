@@ -26,13 +26,18 @@ exports.handler = (event, _, callback) => {
    */
   const challenge = event.pathParameters['hub.challenge']
 
+  /**
+   * @var {number} client Matches one of Muffin restaurants
+   */
+  const client = event.pathParameters.client_id
+
   // Missing configuration.
   if (!token) {
     return respond(500, 'Token missing in enviroment variable.')
   }
 
   // Is not subscribe request.
-  if (event.pathParameters['hub.mode'] !== 'subscribe' || !challenge) {
+  if (event.pathParameters['hub.mode'] !== 'subscribe' || !challenge || !client) {
     return respond(422, 'Request has incorrect or missing parameters.')
   }
 
