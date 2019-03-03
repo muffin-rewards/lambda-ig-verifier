@@ -10,7 +10,7 @@ To deploy the lambda for production, use `npm run deploy:prod`.
 ## Request
 The request `GET` has 4 mandatory query parameters:
 
-- `promoter_id` matches id of one of Muffin promoter
+- `promoter` matches id of one of Muffin promoter
 - `hub.verify_token` is a token that is set in the IG Dashboard when creating
 new webhook
 - `hub.mode` has to be equal to `subscribe`

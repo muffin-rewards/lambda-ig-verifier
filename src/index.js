@@ -29,7 +29,7 @@ exports.handler = (event, _, callback) => {
   /**
    * @var {number} promoter Matches one of Muffin restaurants
    */
-  const promoter = event.pathParameters.promoter_id
+  const promoter = event.pathParameters.promoter
 
   // Missing configuration.
   if (!token) {
