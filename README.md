@@ -21,6 +21,6 @@ If the enviroment has not been setup, it respond with http status `500`.
 
 If the challenge is empty or mode is not correct it responds with `422`.
 
-If the token does not match, it responds with http status `403`.
+If the token does not match, it responds with http status `401`.
 
 Otherwise it responds with `200` and puts `hub.challenge` into body.

@@ -43,7 +43,7 @@ exports.handler = (event, _, callback) => {
 
   // Token sent with the request don't match the one set in the enviroment.
   if (event.queryStringParameters['hub.verify_token'] !== token) {
-    return respond(403, 'Tokens don\'t match.')
+    return respond(401, 'Tokens don\'t match.')
   }
 
   // Responds with the challenge integer to verify the subscribtion.
