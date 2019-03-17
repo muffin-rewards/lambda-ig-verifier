@@ -4,7 +4,7 @@ Verifies new Instagram API webhooks.
 ## Deployment
 To deploy the lambda for production, use `npm run deploy:prod`.
 
-### Enviroment variables
+### Environment variables
 - `TOKEN` which is going to be matched against `hub.verify_token` query parameter.
 
 ## Request
@@ -16,7 +16,7 @@ new webhook
 - `hub.challenge` is an integer that we respond with if the request is valid
 
 ## Response
-If the enviroment has not been setup, it respond with http status `500`.
+If the environment has not been setup, it respond with http status `500`.
 
 If the challenge is empty or mode is not correct it responds with `422`.
 
